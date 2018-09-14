@@ -19,7 +19,7 @@ int main(){
     }
     in.close(); //Closes file
     game.begin(); //Begins game
-    
+
     return 0;
 }
 

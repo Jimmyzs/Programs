@@ -10,38 +10,39 @@
 using namespace std;
 
 //Constructor initiating tries and play
-Scramble::Scramble():tries(3),play(true){}
+Scramble::Scramble():tries(3),play(true),length(0){}
 
 //Checks if word is at least 3 letters long, makes it capital and adds it to the list
 void Scramble::addWord(string s){
-    if(s.length()>=3){
-        for(int i=0;i<s.length();i++){
+    length=s.length();
+    if(length>=3){
+        for(int i=0;i<length;i++){
             s[i]=toupper(s[i]);
         }
         words.push_back(s);
     }
 }
 
-//Adds all of the permutations of a word that are not the same as the original word using recursion 
+//Adds all of the permutations of a word that are not the same as the original word using recursion
 void Scramble::scramble(int letter){
-    if(letter+1!=word.length()){
-        for(int i=letter+1;i<word.length();i++){
-            char c=word[letter];
-            word[letter]=word[i];
-            word[i]=c;
+    length=word.length();
+    if(letter+1!=length){
+        for(int i=letter+1;i<length;i++){
+			swap(word[letter], word[i]);
             if(word!=outputs[0]){
                 outputs.push_back(word);
             }
             scramble(letter+1);
+			swap(word[letter], word[i]);
         }
-    }       
+    }
 }
 
 //Starts the game and randomly picks a word and mixes up the word
 void Scramble::begin(){
     auto it=words.begin();
     string user;
-    
+
     //Loops until every word is used or user quits
     while(play&&!words.empty()){
         srand(time(0));
@@ -60,10 +61,11 @@ void Scramble::begin(){
         srand(time(0));
         randNum=(rand() % (outputs.size()-1))+1;
         cout<<"Unscramble ("<<outputs[randNum]<<")"<<endl; //Random scrambled word
-        while(play){ //Takes user input 
+        while(play){ //Takes user input
             cout<<tries<<" tries left"<<endl;
             cin>>user;
-            for(int i=0;i<user.length();i++){
+            length=user.length();
+            for(int i=0;i<length;i++){
                 user[i]=toupper(user[i]);
             }
             if(user==outputs[0]){
@@ -92,7 +94,7 @@ void Scramble::begin(){
             cout<<"Out of Words"<<endl;
             return;
         }
-                    
-    }   
-    
+
+    }
+
 }

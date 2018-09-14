@@ -17,14 +17,15 @@ class Scramble{
     void addWord(string s);
     void begin();
     void scramble(int letter);
-       
+
     private:
     list<string> words;
     vector<string> outputs;
     int tries;
+    int length;
     string word;
     bool play;
-    
+
 
 };
 
