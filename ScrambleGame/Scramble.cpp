@@ -28,12 +28,12 @@ void Scramble::scramble(int letter){
     length=word.length();
     if(letter+1!=length){
         for(int i=letter+1;i<length;i++){
-			swap(word[letter], word[i]);
+            swap(word[letter], word[i]);
             if(word!=outputs[0]){
                 outputs.push_back(word);
             }
             scramble(letter+1);
-			swap(word[letter], word[i]);
+            swap(word[letter], word[i]);
         }
     }
 }
