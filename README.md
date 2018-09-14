@@ -1,3 +1,3 @@
-# Programs
-> This repository belongs to Qifu (Jimmy) Yuan
-> The repository hold independent projects and class projects.
+# UnScramble
+> This repository hold an unscramble game taking in words from a txt file with a list of words. The program can be compiled using the included makeFile.
+
