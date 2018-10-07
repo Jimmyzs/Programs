@@ -27,9 +27,9 @@ void Scramble::addWord(string s){
 void Scramble::scramble(int letter){
     length=word.length();
     if(letter+1!=length){
-        for(int i=letter+1;i<length;i++){
+        for(int i=letter;i<length;i++){
             swap(word[letter], word[i]);
-            if(word!=outputs[0]){
+            if(word!=outputs[0]&&i!=letter){
                 outputs.push_back(word);
             }
             scramble(letter+1);
@@ -49,7 +49,7 @@ void Scramble::begin(){
         int randNum=rand()%words.size();
         int size=6;
         advance(it,randNum);
-        for(int i=4;i<(*it).length();i++){ //Gets the max size of the vector n!
+        for(int i=4;i<=(*it).length();i++){ //Gets the max size of the vector n!
             size*=i;
         }
         outputs.reserve(size);
